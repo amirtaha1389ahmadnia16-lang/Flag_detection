@@ -1,11 +1,13 @@
-const CACHE = "flag-game-v7";
+const CACHE = "flag-game-app";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
     (async () => {
       const c = await caches.open(CACHE);
       await Promise.all(
-        ["./", "./index.html", "./sw.js"].map((u) => c.add(u).catch(() => {})),
+        ["./", "./index.html", "./manifest.json", "./sw.js"].map((u) =>
+          c.add(u).catch(() => {}),
+        ),
       );
       await self.skipWaiting();
     })(),
@@ -42,24 +44,24 @@ self.addEventListener("message", (e) => {
             }),
           );
         }
-        if (d.fontCss) {
-          try {
-            const res = await fetch(d.fontCss, { mode: "cors" });
-            const css = await res.text();
-            await c.put(
-              d.fontCss,
-              new Response(css, { headers: { "Content-Type": "text/css" } }),
-            );
-            const fonts = Array.from(
-              css.matchAll(/url\((https:[^)]+?\.woff2)\)/g),
-            ).map((m) => m[1]);
-            for (const f of new Set(fonts)) {
-              try {
-                if (!(await c.match(f))) await c.add(f);
-              } catch (_) {}
-            }
-          } catch (_) {}
-        }
+        const FONT_CSS =
+          "https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;600;700;800&display=swap";
+        try {
+          const res = await fetch(FONT_CSS, { mode: "cors" });
+          const css = await res.text();
+          await c.put(
+            FONT_CSS,
+            new Response(css, { headers: { "Content-Type": "text/css" } }),
+          );
+          const fonts = Array.from(
+            css.matchAll(/url\((https:[^)]+?\.woff2)\)/g),
+          ).map((m) => m[1]);
+          for (const f of new Set(fonts)) {
+            try {
+              if (!(await c.match(f))) await c.add(f);
+            } catch (_) {}
+          }
+        } catch (_) {}
         const clients = await self.clients.matchAll();
         clients.forEach((cl) => cl.postMessage({ type: "OFFLINE_READY" }));
       } catch (_) {}
@@ -77,8 +79,7 @@ self.addEventListener("fetch", (e) => {
     return;
   }
   const same = url.origin === location.origin;
-  if (!same && !/fonts\.gstatic\.com|fonts\.googleapis\.com/.test(url.hostname))
-    return;
+  if (!same && !/fonts\.(gstatic|googleapis)\.com/.test(url.hostname)) return;
 
   if (same && req.mode === "navigate") {
     e.respondWith(
@@ -89,10 +90,7 @@ self.addEventListener("fetch", (e) => {
           return r;
         })
         .catch(() =>
-          caches
-            .match(req)
-            .then((h) => h || caches.match("./index.html"))
-            .then((h) => h || caches.match("./")),
+          caches.match("./index.html").then((h) => h || caches.match("./")),
         ),
     );
     return;
