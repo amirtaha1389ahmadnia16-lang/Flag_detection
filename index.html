@@ -2156,13 +2156,7 @@
                         height="66"
                         fill="#2B2F38"
                       />
-                      <rect
-                        x="50"
-                        y="14"
-                        width="20"
-                        height="66"
-                        fill="#fff"
-                      />
+                      <rect x="50" y="14" width="20" height="66" fill="#fff" />
                       <rect
                         x="70"
                         y="14"
@@ -6572,12 +6566,16 @@
           png512 = logoPNG(512, false),
           pngMask = logoPNG(512, true);
         $("#install-logo").src = png192;
+        const BASE = location.href.replace(
+          /[^/]*(\?.*)?(#.*)?$/,
+          "",
+        ); /* آدرس مطلق همین صفحه */
         const manifest = {
           name: "تشخیص پرچم",
           short_name: "تشخیص پرچم",
           description: "بازی حدس پرچم ۲۶۰ سرزمین جهان",
-          start_url: ".",
-          scope: ".",
+          start_url: BASE,
+          scope: BASE,
           display: "fullscreen",
           orientation: "portrait",
           background_color: "#f8f8fc",
