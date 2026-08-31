@@ -1,51 +1,35 @@
 <!doctype html>
-<html lang="fa" dir="rtl">
+<html>
   <head>
     <meta charset="UTF-8" />
-    <title>سازندهٔ آیکون‌های «تشخیص پرچم»</title>
+    <title>ساخت آیکون‌های PWA</title>
     <style>
       body {
-        font-family: Tahoma, sans-serif;
+        font-family: Tahoma;
         direction: rtl;
         background: #f8f8fc;
         display: grid;
         place-items: center;
         min-height: 100vh;
         margin: 0;
-        padding: 20px;
       }
       .box {
         background: #fff;
-        border: 1px solid #e6e7ee;
         border-radius: 20px;
         padding: 30px;
-        max-width: 420px;
         text-align: center;
         box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.15);
-      }
-      h1 {
-        font-size: 20px;
-        margin: 0 0 10px;
-      }
-      p {
-        color: #71757f;
-        font-size: 13px;
-        line-height: 1.8;
-        margin: 0 0 20px;
       }
       button {
         background: #f5b042;
         color: #4a3200;
         border: none;
         border-radius: 13px;
-        padding: 13px 30px;
+        padding: 14px 30px;
         font-size: 16px;
         font-weight: 800;
-        font-family: inherit;
         cursor: pointer;
-      }
-      button:active {
-        transform: scale(0.96);
+        margin: 10px;
       }
       canvas {
         display: none;
@@ -53,23 +37,22 @@
       .done {
         color: #2c7a33;
         font-weight: 800;
-        margin-top: 16px;
+        margin-top: 14px;
         display: none;
+        font-size: 14px;
+      }
+      p {
+        color: #71757f;
+        font-size: 13px;
       }
     </style>
   </head>
   <body>
     <div class="box">
-      <h1>🚩 سازندهٔ آیکون PWA</h1>
-      <p>
-        این ۳ فایل را دانلود کن و داخل پوشهٔ
-        <b>icons</b> بگذار:<br />icon-192.png • icon-512.png •
-        icon-maskable-512.png
-      </p>
-      <button onclick="gen()">دانلود آیکون‌ها</button>
-      <div class="done" id="ok">
-        ✅ هر ۳ فایل دانلود شد — آن‌ها را در پوشهٔ icons بگذار
-      </div>
+      <h2>🚩 ساخت آیکون‌های PWA</h2>
+      <p>۳ فایل دانلود می‌شه — همه رو داخل پوشهٔ <b>icons</b> بذار</p>
+      <button onclick="gen()">📥 دانلود ۳ آیکون</button>
+      <div class="done" id="ok">✅ حالا ۳ فایل رو در پوشهٔ icons بذار</div>
     </div>
     <canvas id="c"></canvas>
     <script>
@@ -83,16 +66,14 @@
         x.closePath();
       }
       function draw(x, inner) {
-        /* پس‌زمینهٔ طلایی — مثل لوگوی برنامه */
-        rr(x, 0, 0, 120, 120, 28);
         x.fillStyle = "#f5b042";
+        rr(x, 0, 0, 120, 120, 28);
         x.fill();
         x.save();
         if (inner) {
           x.translate(13.2, 13.2);
           x.scale(0.78, 0.78);
         }
-        /* حاشیهٔ سفید */
         x.strokeStyle = "rgba(255,255,255,.75)";
         x.lineWidth = 2.5;
         x.setLineDash([1, 7.5]);
@@ -100,7 +81,6 @@
         rr(x, 7, 7, 106, 106, 21);
         x.stroke();
         x.setLineDash([]);
-        /* میلهٔ سفید */
         x.strokeStyle = "#fff";
         x.lineWidth = 6;
         x.lineCap = "round";
@@ -112,7 +92,6 @@
         x.beginPath();
         x.arc(30, 19, 5, 0, 6.3);
         x.fill();
-        /* پرچم سه‌رنگ: #2B2F38 / سفید / #2B2F38 */
         x.save();
         x.beginPath();
         x.moveTo(34, 27);
@@ -123,12 +102,11 @@
         x.clip();
         x.fillStyle = "#2b2f38";
         x.fillRect(30, 14, 20, 66);
-        x.fillStyle = "#ffffff";
+        x.fillStyle = "#fff";
         x.fillRect(50, 14, 20, 66);
         x.fillStyle = "#2b2f38";
         x.fillRect(70, 14, 20, 66);
         x.restore();
-        /* ذره‌بین */
         x.strokeStyle = "#2b2f38";
         x.lineWidth = 9;
         x.lineCap = "round";
@@ -167,21 +145,21 @@
         draw(x, inner);
         return c.toDataURL("image/png");
       }
-      function dl(name, url) {
+      function dl(n, u) {
         const a = document.createElement("a");
-        a.href = url;
-        a.download = name;
+        a.href = u;
+        a.download = n;
         document.body.appendChild(a);
         a.click();
         a.remove();
       }
       function gen() {
         dl("icon-192.png", make(192, false));
-        setTimeout(() => dl("icon-512.png", make(512, false)), 400);
-        setTimeout(() => dl("icon-maskable-512.png", make(512, true)), 800);
+        setTimeout(() => dl("icon-512.png", make(512, false)), 500);
+        setTimeout(() => dl("icon-maskable-512.png", make(512, true)), 1000);
         setTimeout(
           () => (document.getElementById("ok").style.display = "block"),
-          1200,
+          1500,
         );
       }
     </script>
