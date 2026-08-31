@@ -4445,6 +4445,9 @@
       }
       function refreshGrid() {
         for (let i = 0; i < TOTAL; i++) paintCell(i);
+        updateStagesMeta();
+      }
+      function updateStagesMeta() {
         $("#sp-text").textContent = faNum(S.done) + " از " + faNum(TOTAL);
         $("#sp-fill").style.width = ((S.done / TOTAL) * 100).toFixed(2) + "%";
         $("#continue-label").textContent =
@@ -4629,6 +4632,7 @@
         $("#gp-fill").style.width = ((S.done / TOTAL) * 100).toFixed(2) + "%";
         paintCell(idx, true);
         if (S.done < TOTAL) paintCell(S.done, true);
+        updateStagesMeta();
         checkBadges();
         const arr = Array.from($("#g-options").children);
         arr.forEach((b) => {
