@@ -1951,6 +1951,741 @@
           grid-template-columns: repeat(2, 1fr);
         }
       }
+      /* ============================================================
+   🖥️📱 تبلت، لپ‌تاپ و دسکتاپ — انتهای style اضافه شود
+============================================================ */
+
+      /* ---------- تبلت عمودی (از 600px) ---------- */
+      @media (min-width: 600px) {
+        #app {
+          max-width: 600px;
+        }
+
+        .topbar {
+          padding: 10px 16px;
+        }
+        .tb-title {
+          font-size: 16px;
+        }
+        .icon-btn {
+          width: 42px;
+          height: 42px;
+        }
+        .icon-btn .svg-ic {
+          width: 18px;
+          height: 18px;
+        }
+        .score-chip {
+          padding: 7px 14px;
+          font-size: 14.5px;
+        }
+        #btn-restart {
+          padding: 9px 16px;
+          font-size: 14px;
+        }
+        #btn-restart .svg-ic {
+          width: 15px;
+          height: 15px;
+        }
+
+        .hero {
+          padding: 20px 24px calc(28px + var(--pb));
+        }
+        .logo {
+          width: 130px;
+        }
+        .hero h1 {
+          font-size: 40px;
+        }
+        .divider {
+          width: 64px;
+          height: 5px;
+        }
+        .hero .sub {
+          font-size: 14px;
+          max-width: 380px;
+        }
+        .flag-row img {
+          width: 52px;
+          height: 36px;
+        }
+        .cta {
+          gap: 12px;
+        }
+        .btn {
+          font-size: 17px;
+        }
+        .btn .svg-ic {
+          width: 19px;
+          height: 19px;
+        }
+        .stats {
+          padding: 16px 8px;
+        }
+        .stat b {
+          font-size: 26px;
+        }
+        .stat span {
+          font-size: 12px;
+        }
+        .vr {
+          height: 34px;
+        }
+        .daily {
+          padding: 12px 14px;
+        }
+        .daily .d-ic {
+          width: 44px;
+          height: 44px;
+        }
+        .daily .d-ic .svg-ic {
+          width: 20px;
+          height: 20px;
+        }
+        .daily .d-tx b {
+          font-size: 15px;
+        }
+        .daily .d-tx span {
+          font-size: 12px;
+        }
+        .tools {
+          gap: 12px;
+        }
+        .tool {
+          padding: 12px 10px;
+          font-size: 14.5px;
+        }
+        .tool .svg-ic {
+          width: 17px;
+          height: 17px;
+        }
+        .link-danger {
+          font-size: 13.5px;
+        }
+
+        .stage-progress {
+          padding: 14px 16px;
+        }
+        .sp-row {
+          font-size: 14px;
+        }
+        .sp-row b {
+          font-size: 16px;
+        }
+        .bar {
+          height: 9px;
+        }
+        #btn-continue {
+          font-size: 16px;
+          padding: 12px 18px;
+        }
+        .grid {
+          grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+          gap: 12px;
+        }
+        .num-chip {
+          font-size: 12px;
+          padding: 3px 7px;
+        }
+        .cell.locked .big {
+          font-size: 22px;
+        }
+        .cell.open .big {
+          font-size: 30px;
+        }
+        .cell .tick {
+          width: 24px;
+          height: 24px;
+        }
+        .cell .tick .svg-ic {
+          width: 13px;
+          height: 13px;
+        }
+        .cell.special .big .svg-ic {
+          width: 28px;
+          height: 28px;
+        }
+
+        .game-top {
+          padding: 14px 24px 0;
+          gap: 12px;
+        }
+        .game-cap {
+          font-size: 13.5px;
+        }
+        .flag-card {
+          width: min(100%, 400px);
+          padding: 10px;
+        }
+        .flag-card img {
+          border-radius: 11px;
+        }
+        .question {
+          font-size: 17px;
+        }
+        .game-bottom {
+          padding: 0 24px calc(16px + var(--pb));
+        }
+        .game-inner {
+          gap: 12px;
+        }
+        .opt {
+          font-size: 17px;
+          padding: 12px 16px;
+          min-height: 64px;
+          gap: 13px;
+        }
+        .opt .tag {
+          width: 34px;
+          height: 34px;
+          font-size: 17px;
+        }
+        .opt.flag-opt .fimg {
+          width: 74px;
+          height: 50px;
+        }
+        .btn-hint {
+          font-size: 15.5px;
+          padding: 13px;
+        }
+        .btn-hint .svg-ic {
+          width: 18px;
+          height: 18px;
+        }
+        .compare img {
+          width: 74px;
+          height: 50px;
+        }
+        .compare span {
+          font-size: 14px;
+        }
+
+        .timer {
+          width: 72px;
+          height: 72px;
+        }
+        .timer b {
+          font-size: 23px;
+        }
+        .tr-bg,
+        .tr-fg {
+          stroke-width: 4;
+        }
+        .ch-box b {
+          font-size: 23px;
+        }
+        .ch-box span {
+          font-size: 12px;
+        }
+        .xmul {
+          font-size: 11px;
+        }
+
+        #page-challenge .flag-card {
+          width: min(100%, 340px);
+        }
+        #page-challenge .question {
+          font-size: 16px;
+        }
+        #page-challenge .opt {
+          font-size: 16.5px;
+          min-height: 60px;
+        }
+
+        #type-input {
+          font-size: 18px;
+          padding: 13px 16px;
+        }
+        .type-send {
+          width: 60px;
+        }
+        .type-send .svg-ic {
+          width: 23px;
+          height: 23px;
+        }
+        .type-hint {
+          font-size: 13.5px;
+        }
+        .type-skip {
+          font-size: 14px;
+          padding: 11px;
+        }
+
+        .modal-card {
+          max-width: 460px;
+          padding: 28px 24px;
+        }
+        .m-title {
+          font-size: 29px;
+        }
+        .m-text {
+          font-size: 15px;
+        }
+        .m-flag {
+          width: min(62%, 240px);
+        }
+        .m-score b {
+          font-size: 20px;
+        }
+        .stamp {
+          width: 96px;
+          height: 96px;
+        }
+        .stamp .in b {
+          font-size: 32px;
+        }
+        .stamp .in .svg-ic {
+          width: 36px;
+          height: 36px;
+        }
+        .m-stats b {
+          font-size: 25px;
+        }
+        .m-stats span {
+          font-size: 12.5px;
+        }
+        .m-btns .btn {
+          font-size: 16px;
+          padding: 13px 10px;
+        }
+        .mode-row {
+          padding: 14px;
+        }
+        .mode-row .m-ic {
+          width: 48px;
+          height: 48px;
+        }
+        .mode-row .m-ic .svg-ic {
+          width: 22px;
+          height: 22px;
+        }
+        .mode-row .m-tx b {
+          font-size: 16px;
+        }
+        .mode-row .m-tx span {
+          font-size: 12.5px;
+        }
+        .mode-row .m-best {
+          font-size: 22px;
+        }
+        .kv {
+          padding: 10px 12px;
+        }
+        .kv b {
+          font-size: 15px;
+        }
+        .kv .k {
+          font-size: 12px;
+        }
+        .fact {
+          font-size: 14px;
+          padding: 11px 13px;
+        }
+        .badge-grid {
+          gap: 10px;
+        }
+        .badge .b-ic {
+          width: 44px;
+          height: 44px;
+        }
+        .badge .b-ic .svg-ic {
+          width: 20px;
+          height: 20px;
+        }
+        .badge b {
+          font-size: 12.5px;
+        }
+        .badge span {
+          font-size: 10.5px;
+        }
+        .stat-row {
+          font-size: 14.5px;
+          padding: 11px 14px;
+        }
+        .stat-row b {
+          font-size: 19px;
+        }
+        .weak {
+          width: 96px;
+        }
+        .weak img {
+          width: 72px;
+          height: 48px;
+        }
+        .sec-t {
+          font-size: 13.5px;
+        }
+
+        .toast {
+          font-size: 14.5px;
+          padding: 12px 22px;
+        }
+        .toast .svg-ic {
+          width: 17px;
+          height: 17px;
+        }
+      }
+
+      /* ---------- تبلت افقی و لپ‌تاپ (از 900px) ---------- */
+      @media (min-width: 900px) {
+        #app {
+          max-width: 780px;
+        }
+
+        .logo {
+          width: 150px;
+        }
+        .hero h1 {
+          font-size: 46px;
+        }
+        .hero .sub {
+          font-size: 15px;
+        }
+        .flag-row img {
+          width: 58px;
+          height: 40px;
+        }
+        .btn {
+          font-size: 18px;
+          padding: 16px 20px;
+        }
+        .stat b {
+          font-size: 30px;
+        }
+
+        .grid {
+          grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+          gap: 14px;
+        }
+        .cell {
+          border-radius: 14px;
+        }
+        .cell.locked .big {
+          font-size: 26px;
+        }
+        .cell.open .big {
+          font-size: 36px;
+        }
+
+        .flag-card {
+          width: min(100%, 460px);
+        }
+        .question {
+          font-size: 19px;
+        }
+
+        /* گزینه‌ها ۲×۲ می‌شوند */
+        .options {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+        }
+        .opt {
+          max-height: none;
+          min-height: 72px;
+          font-size: 18px;
+        }
+
+        #page-challenge .flag-card {
+          width: min(100%, 380px);
+        }
+        #page-challenge .question {
+          font-size: 17px;
+        }
+        #page-challenge .opt {
+          font-size: 17px;
+          min-height: 66px;
+        }
+
+        .timer {
+          width: 80px;
+          height: 80px;
+        }
+        .timer b {
+          font-size: 26px;
+        }
+        .tr-bg,
+        .tr-fg {
+          stroke-width: 3.5;
+        }
+
+        .prompt-card {
+          width: min(100%, 380px);
+          min-height: 120px;
+        }
+        .p-main {
+          font-size: 32px;
+        }
+        .p-sub {
+          font-size: 12.5px;
+        }
+
+        .modal-card {
+          max-width: 520px;
+        }
+        .m-flag {
+          width: min(62%, 260px);
+        }
+
+        .badge-grid {
+          grid-template-columns: repeat(4, 1fr);
+          gap: 12px;
+        }
+      }
+
+      /* ---------- مانیتور بزرگ (از 1200px) ---------- */
+      @media (min-width: 1200px) {
+        #app {
+          max-width: 840px;
+        }
+        .flag-card {
+          width: min(100%, 500px);
+        }
+        .opt {
+          font-size: 19px;
+          min-height: 78px;
+        }
+        .grid {
+          grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+        }
+        .hero h1 {
+          font-size: 50px;
+        }
+      }
+
+      /* ---------- حس پنجرهٔ اپ در مرورگر دسکتاپ (در حالت نصب‌شده کامل‌صفحه می‌ماند) ---------- */
+      @media (min-width: 900px) and (display-mode: browser) {
+        body {
+          padding: 28px;
+          background-color: #e8eaf1;
+        }
+        #app {
+          height: calc(100dvh - 56px);
+          border-radius: 28px;
+          border: 1px solid #dcdfe8;
+          box-shadow: 0 30px 70px -25px rgba(43, 47, 56, 0.35);
+        }
+      }
+
+      /* ---------- هاور برای دستگاه‌های دارای موس ---------- */
+      @media (hover: hover) {
+        .btn:hover {
+          transform: translateY(-2px);
+        }
+        .btn-ghost:hover {
+          border-color: var(--blue);
+          color: var(--blue);
+        }
+        .icon-btn:hover {
+          transform: scale(1.06);
+        }
+        #btn-restart:hover {
+          background: #dcecfd;
+          border-color: #7bb8f7;
+        }
+        .opt:not(:disabled):hover {
+          border-color: var(--gold);
+          background: #fffdf4;
+        }
+        .tool:hover {
+          border-color: var(--gold);
+          transform: translateY(-1px);
+        }
+        .mode-row:hover {
+          border-color: var(--gold);
+        }
+        .daily:not(.done):hover {
+          background: var(--gold-bg);
+          border-color: var(--gold);
+        }
+        .btn-hint:not(:disabled):hover {
+          background: var(--gold-bg);
+        }
+        .type-skip:not(:disabled):hover {
+          border-color: var(--red);
+          color: var(--red);
+        }
+        .flag-row img:hover {
+          transform: rotate(0deg) scale(1.18);
+          z-index: 2;
+          position: relative;
+        }
+        .cell.open:hover,
+        .cell.done:hover,
+        .cell.special:hover {
+          transform: scale(1.06);
+        }
+
+        /* بازتأیید افکت فشردن تا هاور آن را از بین نبرد */
+        .btn:active {
+          transform: scale(0.97);
+        }
+        .icon-btn:active {
+          transform: scale(0.86);
+        }
+        #btn-restart:active {
+          transform: rotate(-180deg) scale(0.86);
+        }
+        .opt:not(:disabled):active {
+          transform: scale(0.98);
+        }
+        .tool:active {
+          transform: scale(0.97);
+        }
+      }
+
+      /* ---------- اسکرول‌بار ظریف فقط در دسکتاپ ---------- */
+      @media (min-width: 900px) and (hover: hover) {
+        .scroll,
+        .game-bottom,
+        .modal-card {
+          scrollbar-width: thin;
+          scrollbar-color: #d4d7e2 transparent;
+        }
+        .scroll::-webkit-scrollbar,
+        .game-bottom::-webkit-scrollbar,
+        .modal-card::-webkit-scrollbar {
+          display: block;
+          width: 7px;
+        }
+        .scroll::-webkit-scrollbar-thumb,
+        .game-bottom::-webkit-scrollbar-thumb,
+        .modal-card::-webkit-scrollbar-thumb {
+          background: #d4d7e2;
+          border-radius: 99px;
+        }
+        .scroll::-webkit-scrollbar-track,
+        .game-bottom::-webkit-scrollbar-track,
+        .modal-card::-webkit-scrollbar-track {
+          background: transparent;
+        }
+      }
+      /* ============================================================
+   📱 ضد اسکرول: فشرده‌سازی خودکار صفحهٔ خانه در هر گوشی
+   (سه سطح: fit1 → fit2 → fit3 — هیچ‌وقت اسکرول نمی‌خورد)
+============================================================ */
+      .hero.fit1 {
+        padding-top: 8px;
+      }
+      .hero.fit1 .logo {
+        width: clamp(64px, 10.5dvh, 92px);
+      }
+      .hero.fit1 h1 {
+        font-size: clamp(22px, 3.8dvh, 30px);
+      }
+      .hero.fit1 .sub {
+        margin-top: 6px;
+        font-size: 11.5px;
+      }
+      .hero.fit1 .flag-row {
+        margin-top: 6px;
+      }
+      .hero.fit1 .flag-row img {
+        width: 38px;
+        height: 27px;
+      }
+      .hero.fit1 .daily {
+        margin-top: 8px;
+        padding: 7px 9px;
+      }
+      .hero.fit1 .daily .d-ic {
+        width: 32px;
+        height: 32px;
+      }
+      .hero.fit1 .cta {
+        margin-top: 8px;
+        gap: 7px;
+      }
+      .hero.fit1 .btn {
+        font-size: 14px;
+        padding: 10px 14px;
+      }
+      .hero.fit1 .stats {
+        margin-top: 8px;
+        padding: 7px 4px;
+      }
+      .hero.fit1 .stat b {
+        font-size: 18px;
+      }
+      .hero.fit1 .tools {
+        margin-top: 7px;
+        padding: 7px 6px;
+      }
+      .hero.fit1 .tool {
+        font-size: 12px;
+      }
+      .hero.fit1 .link-danger {
+        margin-top: 8px;
+      }
+
+      .hero.fit2 .logo {
+        width: clamp(56px, 9dvh, 80px);
+      }
+      .hero.fit2 h1 {
+        font-size: clamp(20px, 3.2dvh, 26px);
+      }
+      .hero.fit2 .sub {
+        display: none;
+      }
+      .hero.fit2 .flag-row {
+        display: none;
+      }
+      .hero.fit2 .divider {
+        width: 40px;
+        margin-top: 2px;
+      }
+      .hero.fit2 .daily .d-tx span {
+        display: none;
+      }
+      .hero.fit2 .stats {
+        background: transparent;
+        border: none;
+        box-shadow: none;
+        padding: 4px 0;
+      }
+      .hero.fit2 .vr {
+        height: 24px;
+      }
+      .hero.fit2 .stat b {
+        font-size: 16px;
+      }
+      .hero.fit2 .stat span {
+        font-size: 10px;
+      }
+      .hero.fit2 .btn {
+        font-size: 13px;
+        padding: 9px 12px;
+      }
+
+      .hero.fit3 .logo {
+        width: 52px;
+      }
+      .hero.fit3 .tools {
+        display: none;
+      }
+      .hero.fit3 .link-danger {
+        display: none;
+      }
+      .hero.fit3 .stats {
+        display: none;
+      }
+      .hero.fit3 .cta {
+        gap: 6px;
+        margin-top: 6px;
+      }
+
+      /* تراز میانی برای گوشی‌های بلندِ میان‌رده (بین ۶۶۰ تا ۸۰۰) */
+      @media (max-height: 800px) and (min-height: 661px) {
+        .flag-card {
+          width: min(100%, 30dvh, 300px);
+        }
+        .opt {
+          min-height: clamp(44px, 6.6dvh, 68px);
+        }
+        .question {
+          font-size: 14px;
+        }
+      }
     </style>
   </head>
   <body>
@@ -4355,6 +5090,7 @@
             ? faNum(S.dailyRun.pos) + "/۱۰"
             : "جدید";
         }
+        autoFitHome();
       }
       function buildFlagRow() {
         const row = $("#flag-row");
@@ -4371,6 +5107,22 @@
           row.appendChild(img);
           applyFlag(img, i, true);
         });
+      }
+      /* ============ ضد اسکرول: اندازه‌گیری و فشرده‌سازی خودکار ============ */
+      function autoFitHome() {
+        const sc = document.getElementById("home-scroll");
+        const hero = sc ? sc.firstElementChild : null;
+        if (!sc || !hero) return;
+        hero.classList.remove("fit1", "fit2", "fit3");
+        const over = () => {
+          void sc.offsetHeight;
+          return sc.scrollHeight > sc.clientHeight;
+        };
+        if (over()) hero.classList.add("fit1");
+        else return;
+        if (over()) hero.classList.add("fit2");
+        else return;
+        if (over()) hero.classList.add("fit3");
       }
 
       /* ================= آلبوم ================= */
@@ -5813,6 +6565,14 @@
           hideModal();
           return;
         }
+        $("#modal-bk").addEventListener("click", (e) => {
+          if (e.target === e.currentTarget) hideModal();
+        });
+        let _rz;
+        window.addEventListener("resize", () => {
+          clearTimeout(_rz);
+          _rz = setTimeout(autoFitHome, 150);
+        });
         showPage("home");
       });
       $("#btn-start").addEventListener("click", () => showPage("stages"));
