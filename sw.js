@@ -1,4 +1,4 @@
-const CACHE = "flag-game-app-v1";
+const CACHE = "flag-game-v1";
 const BASE = "/Flag_detection/";
 
 self.addEventListener("install", (e) => {
@@ -27,49 +27,6 @@ self.addEventListener("activate", (e) => {
   );
 });
 
-self.addEventListener("message", (e) => {
-  const d = e.data;
-  if (!d || d.type !== "PRECACHE") return;
-  e.waitUntil(
-    (async () => {
-      try {
-        const c = await caches.open(CACHE);
-        const urls = Array.from(new Set(d.urls || []));
-        for (let i = 0; i < urls.length; i += 8) {
-          await Promise.all(
-            urls.slice(i, i + 8).map(async (u) => {
-              try {
-                if (await c.match(u)) return;
-                await c.add(u);
-              } catch (_) {}
-            }),
-          );
-        }
-        const FONT_CSS =
-          "https://fonts.googleapis.com/css2?family=Lalezar&family=Vazirmatn:wght@400;600;700;800&display=swap";
-        try {
-          const res = await fetch(FONT_CSS, { mode: "cors" });
-          const css = await res.text();
-          await c.put(
-            FONT_CSS,
-            new Response(css, { headers: { "Content-Type": "text/css" } }),
-          );
-          const fonts = Array.from(
-            css.matchAll(/url\((https:[^)]+?\.woff2)\)/g),
-          ).map((m) => m[1]);
-          for (const f of new Set(fonts)) {
-            try {
-              if (!(await c.match(f))) await c.add(f);
-            } catch (_) {}
-          }
-        } catch (_) {}
-        const clients = await self.clients.matchAll();
-        clients.forEach((cl) => cl.postMessage({ type: "OFFLINE_READY" }));
-      } catch (_) {}
-    })(),
-  );
-});
-
 self.addEventListener("fetch", (e) => {
   const req = e.request;
   if (req.method !== "GET") return;
@@ -91,10 +48,7 @@ self.addEventListener("fetch", (e) => {
           return r;
         })
         .catch(() =>
-          caches
-            .match(req)
-            .then((h) => h || caches.match(BASE + "index.html"))
-            .then((h) => h || caches.match(BASE)),
+          caches.match(req).then((h) => h || caches.match(BASE + "index.html")),
         ),
     );
     return;

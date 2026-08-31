@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-title" content="تشخیص پرچم" />
     <title>تشخیص پرچم</title>
 
-    <link rel="manifest" href="/Flag_detection/manifest.json" />
+    <link rel="manifest" href="manifest.json" />
     <link rel="icon" id="favicon" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -5912,7 +5912,7 @@
         ) {
           window.addEventListener("load", () => {
             navigator.serviceWorker
-              .register("/Flag_detection/sw.js")
+              .register("sw.js")
               .then(() => {
                 navigator.serviceWorker.ready.then((reg) => {
                   const target = reg.active || reg.waiting || reg.installing;

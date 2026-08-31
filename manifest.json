@@ -1,10 +1,10 @@
 {
   "name": "تشخیص پرچم",
   "short_name": "تشخیص پرچم",
-  "description": "بازی حدس پرچم ۲۶۰ سرزمین جهان با حالت‌های مختلف و اطلاعات کامل هر کشور",
-  "id": "/Flag_detection/",
-  "start_url": "/Flag_detection/",
-  "scope": "/Flag_detection/",
+  "description": "بازی حدس پرچم ۲۶۰ سرزمین جهان با اطلاعات کامل هر کشور",
+  "id": "/",
+  "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f8f8fc",
@@ -14,26 +14,22 @@
   "categories": ["game", "education"],
   "icons": [
     {
-      "src": "/Flag_detection/icons/icon-192.png",
+      "src": "icons/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Flag_detection/icons/icon-512.png",
+      "src": "icons/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "/Flag_detection/icons/icon-maskable-512.png",
+      "src": "icons/icon-maskable-512.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
     }
   ]
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> ec3fe8d (fix manifest url for github pages)
