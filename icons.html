@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>سازندهٔ آیکون‌های «تشخیص پرچم»</title>
+    <style>
+      body {
+        font-family: Tahoma, sans-serif;
+        direction: rtl;
+        background: #f8f8fc;
+        display: grid;
+        place-items: center;
+        min-height: 100vh;
+        margin: 0;
+        padding: 20px;
+      }
+      .box {
+        background: #fff;
+        border: 1px solid #e6e7ee;
+        border-radius: 20px;
+        padding: 30px;
+        max-width: 420px;
+        text-align: center;
+        box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.15);
+      }
+      h1 {
+        font-size: 20px;
+        margin: 0 0 10px;
+      }
+      p {
+        color: #71757f;
+        font-size: 13px;
+        line-height: 1.8;
+        margin: 0 0 20px;
+      }
+      button {
+        background: #f5b042;
+        color: #4a3200;
+        border: none;
+        border-radius: 13px;
+        padding: 13px 30px;
+        font-size: 16px;
+        font-weight: 800;
+        font-family: inherit;
+        cursor: pointer;
+      }
+      button:active {
+        transform: scale(0.96);
+      }
+      canvas {
+        display: none;
+      }
+      .done {
+        color: #2c7a33;
+        font-weight: 800;
+        margin-top: 16px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <h1>🚩 سازندهٔ آیکون PWA</h1>
+      <p>
+        این ۳ فایل را دانلود کن و داخل پوشهٔ
+        <b>icons</b> بگذار:<br />icon-192.png • icon-512.png •
+        icon-maskable-512.png
+      </p>
+      <button onclick="gen()">دانلود آیکون‌ها</button>
+      <div class="done" id="ok">
+        ✅ هر ۳ فایل دانلود شد — آن‌ها را در پوشهٔ icons بگذار
+      </div>
+    </div>
+    <canvas id="c"></canvas>
+    <script>
+      function rr(x, X, Y, W, H, R) {
+        x.beginPath();
+        x.moveTo(X + R, Y);
+        x.arcTo(X + W, Y, X + W, Y + H, R);
+        x.arcTo(X + W, Y + H, X, Y + H, R);
+        x.arcTo(X, Y + H, X, Y, R);
+        x.arcTo(X, Y, X + W, Y, R);
+        x.closePath();
+      }
+      function draw(x, inner) {
+        /* پس‌زمینهٔ طلایی — مثل لوگوی برنامه */
+        rr(x, 0, 0, 120, 120, 28);
+        x.fillStyle = "#f5b042";
+        x.fill();
+        x.save();
+        if (inner) {
+          x.translate(13.2, 13.2);
+          x.scale(0.78, 0.78);
+        }
+        /* حاشیهٔ سفید */
+        x.strokeStyle = "rgba(255,255,255,.75)";
+        x.lineWidth = 2.5;
+        x.setLineDash([1, 7.5]);
+        x.lineCap = "round";
+        rr(x, 7, 7, 106, 106, 21);
+        x.stroke();
+        x.setLineDash([]);
+        /* میلهٔ سفید */
+        x.strokeStyle = "#fff";
+        x.lineWidth = 6;
+        x.lineCap = "round";
+        x.beginPath();
+        x.moveTo(30, 24);
+        x.lineTo(30, 104);
+        x.stroke();
+        x.fillStyle = "#fff";
+        x.beginPath();
+        x.arc(30, 19, 5, 0, 6.3);
+        x.fill();
+        /* پرچم سه‌رنگ: #2B2F38 / سفید / #2B2F38 */
+        x.save();
+        x.beginPath();
+        x.moveTo(34, 27);
+        x.bezierCurveTo(48, 22, 56, 32, 86, 26);
+        x.lineTo(86, 66);
+        x.bezierCurveTo(56, 72, 48, 62, 34, 68);
+        x.closePath();
+        x.clip();
+        x.fillStyle = "#2b2f38";
+        x.fillRect(30, 14, 20, 66);
+        x.fillStyle = "#ffffff";
+        x.fillRect(50, 14, 20, 66);
+        x.fillStyle = "#2b2f38";
+        x.fillRect(70, 14, 20, 66);
+        x.restore();
+        /* ذره‌بین */
+        x.strokeStyle = "#2b2f38";
+        x.lineWidth = 9;
+        x.lineCap = "round";
+        x.beginPath();
+        x.moveTo(91, 91);
+        x.lineTo(103, 103);
+        x.stroke();
+        x.fillStyle = "#fff";
+        x.beginPath();
+        x.arc(78, 78, 19, 0, 6.3);
+        x.fill();
+        x.lineWidth = 6;
+        x.beginPath();
+        x.arc(78, 78, 19, 0, 6.3);
+        x.stroke();
+        x.lineWidth = 5;
+        x.beginPath();
+        x.moveTo(72, 71.6);
+        x.bezierCurveTo(72, 68, 74.7, 65.6, 78, 65.6);
+        x.bezierCurveTo(81.3, 65.6, 83.9, 67.9, 83.9, 71.2);
+        x.bezierCurveTo(83.9, 75.8, 79.3, 76.6, 78.4, 81);
+        x.stroke();
+        x.fillStyle = "#2b2f38";
+        x.beginPath();
+        x.arc(78.1, 89, 2.9, 0, 6.3);
+        x.fill();
+        x.restore();
+      }
+      function make(size, inner) {
+        const c = document.getElementById("c");
+        c.width = c.height = size;
+        const x = c.getContext("2d");
+        x.setTransform(1, 0, 0, 1, 0, 0);
+        x.clearRect(0, 0, size, size);
+        x.scale(size / 120, size / 120);
+        draw(x, inner);
+        return c.toDataURL("image/png");
+      }
+      function dl(name, url) {
+        const a = document.createElement("a");
+        a.href = url;
+        a.download = name;
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
+      function gen() {
+        dl("icon-192.png", make(192, false));
+        setTimeout(() => dl("icon-512.png", make(512, false)), 400);
+        setTimeout(() => dl("icon-maskable-512.png", make(512, true)), 800);
+        setTimeout(
+          () => (document.getElementById("ok").style.display = "block"),
+          1200,
+        );
+      }
+    </script>
+  </body>
+</html>
