@@ -1,12 +1,13 @@
-const CACHE = "flag-game-app";
+const CACHE = "flag-game-app-v1";
+const BASE = "/Flag_detection/";
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
     (async () => {
       const c = await caches.open(CACHE);
       await Promise.all(
-        ["./", "./index.html", "./manifest.json", "./sw.js"].map((u) =>
-          c.add(u).catch(() => {}),
+        [BASE, BASE + "index.html", BASE + "manifest.json", BASE + "sw.js"].map(
+          (u) => c.add(u).catch(() => {}),
         ),
       );
       await self.skipWaiting();
@@ -86,11 +87,14 @@ self.addEventListener("fetch", (e) => {
       fetch(req)
         .then((r) => {
           const cp = r.clone();
-          caches.open(CACHE).then((c) => c.put("./", cp));
+          caches.open(CACHE).then((c) => c.put(BASE, cp));
           return r;
         })
         .catch(() =>
-          caches.match("./index.html").then((h) => h || caches.match("./")),
+          caches
+            .match(req)
+            .then((h) => h || caches.match(BASE + "index.html"))
+            .then((h) => h || caches.match(BASE)),
         ),
     );
     return;
@@ -107,7 +111,7 @@ self.addEventListener("fetch", (e) => {
             }
             return res;
           })
-          .catch(() => caches.match("./index.html")),
+          .catch(() => caches.match(BASE + "index.html")),
     ),
   );
 });
